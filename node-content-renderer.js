@@ -12,6 +12,7 @@ function isDescendant(older, younger) {
   );
 }
 
+
 // eslint-disable-next-line react/prefer-stateless-function
 class FileThemeNodeContentRenderer extends Component {
   render() {
@@ -122,7 +123,8 @@ class FileThemeNodeContentRenderer extends Component {
         >
           {/* Set the row preview to be used during drag and drop */}
           {connectDragPreview(
-            <div style={{ display: 'flex' }}>
+            <div className={styles.innerRow}
+            >
               {scaffold}
               <div
                 className={

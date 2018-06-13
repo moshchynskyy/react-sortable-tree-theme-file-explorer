@@ -1,3 +1,5 @@
+$colorGrey: #909395;
+
 .rowWrapper {
   height: 100%;
   box-sizing: border-box;
@@ -67,14 +69,14 @@
  * Nodes matching the search conditions are highlighted
  */
 .rowSearchMatch {
-  box-shadow: inset 0 -7px 7px -3px #0080ff;
+  //box-shadow: inset 0 -7px 7px -3px #0080ff;
 }
 
 /**
  * The node that matches the search conditions and is currently focused
  */
 .rowSearchFocus {
-  box-shadow: inset 0 -7px 7px -3px #fc6421;
+  //box-shadow: inset 0 -7px 7px -3px #fc6421;
 }
 
 %rowItem {
@@ -90,6 +92,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
 }
 
 .rowLabel {
@@ -104,7 +107,6 @@
   display: flex;
 }
 
-
 .toolbarButton {
   @extend %rowItem;
 }
@@ -117,7 +119,7 @@
   padding: 0;
   z-index: 2;
   position: absolute;
-  top: 45%;
+  top: 35%;
   width: 30px;
   height: 30px;
   transform: translate3d(-50%, -50%, 0);
@@ -126,12 +128,13 @@
   &::after {
     content: '';
     position: absolute;
-    transform-origin: 7px 4px;
-    transform: translate3d(-50%, -20%, 0);
-    border: solid transparent 10px;
-    border-left-width: 7px;
-    border-right-width: 7px;
-    border-top-color: gray;
+    left: 50%;
+    display: block;
+    width: 5px;
+    height: 5px;
+    border-right: 2px solid $colorGrey;
+    border-bottom: 2px solid $colorGrey;
+    transform: rotate(45deg);
   }
 
   &:hover::after {
@@ -141,15 +144,20 @@
   &:focus {
     outline: none;
 
-    &::after {
-      filter: drop-shadow(0 0 1px #83bef9) drop-shadow(0 0 1px #83bef9)
-        drop-shadow(0 0 1px #83bef9);
-    }
+    //&::after {
+    //  filter: drop-shadow(0 0 1px #83bef9) drop-shadow(0 0 1px #83bef9)
+    //    drop-shadow(0 0 1px #83bef9);
+    //}
   }
 }
 
+.collapseButton::after {
+  filter: drop-shadow(0 0 1px #83bef9) drop-shadow(0 0 1px #83bef9)
+          drop-shadow(0 0 1px #83bef9);
+}
+
 .expandButton::after {
-  transform: translate3d(-50%, -20%, 0) rotateZ(-90deg);
+  //transform: translate3d(-50%, -20%, 0) rotateZ(-90deg);
 }
 
 /**
@@ -295,4 +303,14 @@ $highlight-line-size: 6px; // Make it an even number for clean rendering
     border-bottom: $arrow-size solid transparent;
     border-left: $arrow-size solid $highlight-color;
   }
+}
+
+.innerRow {
+  display: flex;
+  height: 50px;
+  border-bottom: 2px solid $colorGrey;
+}
+
+.ReactVirtualized__Grid__innerScrollContainer:nth-child(1n) {
+  background-color: #dde4e9;
 }
