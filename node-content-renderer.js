@@ -94,7 +94,14 @@ class FileThemeNodeContentRenderer extends Component {
 
     const nodeContent = (
       <div style={{ height: '100%' }} {...otherProps}>
-        {toggleChildrenVisibility &&
+        <div
+          className={
+            styles.rowWrapper +
+            (!canDrag ? ` ${styles.rowWrapperDragDisabled}` : '')
+          }
+        >
+          {/* Expand button arrow */}
+          {toggleChildrenVisibility &&
           node.children &&
           node.children.length > 0 && (
             <button
@@ -115,12 +122,6 @@ class FileThemeNodeContentRenderer extends Component {
             />
           )}
 
-        <div
-          className={
-            styles.rowWrapper +
-            (!canDrag ? ` ${styles.rowWrapperDragDisabled}` : '')
-          }
-        >
           {/* Set the row preview to be used during drag and drop */}
           {connectDragPreview(
             <div className={styles.innerRow}

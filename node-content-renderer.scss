@@ -1,6 +1,9 @@
 $colorGrey: #909395;
 
 .rowWrapper {
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid $colorGrey;
   height: 100%;
   box-sizing: border-box;
   cursor: move;
@@ -27,6 +30,12 @@ $colorGrey: #909395;
   & > * {
     box-sizing: border-box;
   }
+}
+
+.innerRow {
+  display: flex;
+  height: 50px;
+  flex: 1 1 auto;
 }
 
 /**
@@ -118,17 +127,19 @@ $colorGrey: #909395;
   background: transparent;
   padding: 0;
   z-index: 2;
-  position: absolute;
-  top: 35%;
+  position: relative;
+  //top: 35%;
   width: 30px;
   height: 30px;
-  transform: translate3d(-50%, -50%, 0);
+  //transform: translate3d(-50%, -50%, 0);
   cursor: pointer;
+  flex: 0 1 auto;
 
   &::after {
     content: '';
     position: absolute;
-    left: 50%;
+    top: 30%;
+    left: 35%;
     display: block;
     width: 5px;
     height: 5px;
@@ -305,9 +316,5 @@ $highlight-line-size: 6px; // Make it an even number for clean rendering
   }
 }
 
-.innerRow {
-  display: flex;
-  height: 50px;
-  border-bottom: 2px solid $colorGrey;
-}
+
 
