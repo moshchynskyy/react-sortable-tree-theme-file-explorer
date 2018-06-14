@@ -240,6 +240,7 @@ FileThemeNodeContentRenderer.defaultProps = {
   swapLength: null,
   title: null,
   toggleChildrenVisibility: null,
+  onCheck: null
 };
 
 FileThemeNodeContentRenderer.propTypes = {
@@ -276,6 +277,7 @@ FileThemeNodeContentRenderer.propTypes = {
   // Drop target
   canDrop: PropTypes.bool,
   isOver: PropTypes.bool.isRequired,
+  onCheck: PropTypes.func
 };
 
 export default FileThemeNodeContentRenderer;
