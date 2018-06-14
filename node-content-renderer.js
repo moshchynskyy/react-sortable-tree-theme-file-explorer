@@ -115,9 +115,6 @@ class FileThemeNodeContentRenderer extends Component {
             (!canDrag ? ` ${styles.rowWrapperDragDisabled}` : '')
           }
         >
-
-
-
           {/* Set the row preview to be used during drag and drop */}
           {connectDragPreview(
             <div className={styles.innerRow}
@@ -128,8 +125,6 @@ class FileThemeNodeContentRenderer extends Component {
                 <span>..</span>
                 <span>..</span>
               </div>
-
-              <input type="checkbox" onClick={this.onCheckHandler} value={this.state.checked} />
 
               {/* Expand button arrow */}
               {toggleChildrenVisibility &&
@@ -153,9 +148,8 @@ class FileThemeNodeContentRenderer extends Component {
                 />
               )}
 
-
-
               {scaffold}
+
               <div
                 className={
                   styles.row +
