@@ -15,9 +15,24 @@ function isDescendant(older, younger) {
 
 // eslint-disable-next-line react/prefer-stateless-function
 class FileThemeNodeContentRenderer extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      checked: false
+    }
+    this.onCheckHandler = this.onCheckHandler.bind(this);
+  }
+  onCheckHandler() {
+    this.setState(state => ({
+      checked: !state.checked
+    }), () => this.props.onCheck && this.props.onCheck(this.state.checked))
+  }
+
   render() {
     const {
       scaffoldBlockPxWidth,
+      onCheck,
       toggleChildrenVisibility,
       connectDragPreview,
       connectDragSource,
@@ -100,32 +115,46 @@ class FileThemeNodeContentRenderer extends Component {
             (!canDrag ? ` ${styles.rowWrapperDragDisabled}` : '')
           }
         >
-          {/* Expand button arrow */}
-          {toggleChildrenVisibility &&
-          node.children &&
-          node.children.length > 0 && (
-            <button
-              type="button"
-              aria-label={node.expanded ? 'Collapse' : 'Expand'}
-              className={
-                node.expanded ? styles.collapseButton : styles.expandButton
-              }
-              style={{
-                left: (lowerSiblingCounts.length - 0.7) * scaffoldBlockPxWidth,
-              }}
-              onClick={() =>
-                toggleChildrenVisibility({
-                  node,
-                  path,
-                  treeIndex,
-                })}
-            />
-          )}
+
+
 
           {/* Set the row preview to be used during drag and drop */}
           {connectDragPreview(
             <div className={styles.innerRow}
             >
+              {/* Drag-holder */}
+              <div className={styles.dragHolder}>
+                <span>..</span>
+                <span>..</span>
+                <span>..</span>
+              </div>
+
+              <input type="checkbox" onClick={this.onCheckHandler} value={this.state.checked} />
+
+              {/* Expand button arrow */}
+              {toggleChildrenVisibility &&
+              node.children &&
+              node.children.length > 0 && (
+                <button
+                  type="button"
+                  aria-label={node.expanded ? 'Collapse' : 'Expand'}
+                  className={
+                    node.expanded ? styles.collapseButton : styles.expandButton
+                  }
+                  style={{
+                    left: (lowerSiblingCounts.length - 0.7) * scaffoldBlockPxWidth,
+                  }}
+                  onClick={() =>
+                    toggleChildrenVisibility({
+                      node,
+                      path,
+                      treeIndex,
+                    })}
+                />
+              )}
+
+
+
               {scaffold}
               <div
                 className={

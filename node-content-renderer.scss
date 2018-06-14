@@ -3,7 +3,7 @@ $colorGrey: #909395;
 .rowWrapper {
   display: flex;
   align-items: center;
-  border-bottom: 2px solid $colorGrey;
+  border-bottom: 2px solid lighten($colorGrey, 30%);
   height: 100%;
   box-sizing: border-box;
   cursor: move;
@@ -34,8 +34,10 @@ $colorGrey: #909395;
 
 .innerRow {
   display: flex;
+  align-items: center;
   height: 50px;
   flex: 1 1 auto;
+  padding-left: 15px;
 }
 
 /**
@@ -316,5 +318,14 @@ $highlight-line-size: 6px; // Make it an even number for clean rendering
   }
 }
 
+.dragHolder {
+  width: 30px;
+  height: 30px;
 
+  > span {
+    display: block;
+    font-size: 24px;
+    line-height: 5px;
+  }
+}
 
