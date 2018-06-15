@@ -126,6 +126,8 @@ class FileThemeNodeContentRenderer extends Component {
                 <span>..</span>
               </div>
 
+              <input type="checkbox" onClick={this.onCheckHandler} value={this.state.checked} />
+
               {/* Expand button arrow */}
               {toggleChildrenVisibility &&
               node.children &&
