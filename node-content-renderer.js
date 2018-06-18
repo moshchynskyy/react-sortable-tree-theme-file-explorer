@@ -127,9 +127,14 @@ class FileThemeNodeContentRenderer extends Component {
               </div>
 
               <span className="smwb-checkbox">
-                <label htmlFor={nodeTitle}>
-                  <input type="checkbox" id={nodeTitle} name={nodeTitle}  onClick={this.onCheckHandler} value={this.state.checked} />
-                </label>
+                <input
+                  type="checkbox"
+                  name={ nodeTitle }
+                  id={ nodeTitle }
+                  value={ this.state.checked }
+                  onChange={ this.onCheckHandler }
+                />
+                <label htmlFor={ nodeTitle }></label>
               </span>
 
 
