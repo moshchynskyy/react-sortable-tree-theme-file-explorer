@@ -12,21 +12,23 @@ function isDescendant(older, younger) {
   );
 }
 
-
 // eslint-disable-next-line react/prefer-stateless-function
 class FileThemeNodeContentRenderer extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      checked: false
-    }
+      checked: false,
+    };
     this.onCheckHandler = this.onCheckHandler.bind(this);
   }
   onCheckHandler() {
-    this.setState(state => ({
-      checked: !state.checked
-    }), () => this.props.onCheck && this.props.onCheck(this.state.checked))
+    this.setState(
+      state => ({
+        checked: !state.checked,
+      }),
+      () => this.props.onCheck && this.props.onCheck(this.state.checked)
+    );
   }
 
   render() {
@@ -117,8 +119,7 @@ class FileThemeNodeContentRenderer extends Component {
         >
           {/* Set the row preview to be used during drag and drop */}
           {connectDragPreview(
-            <div className={styles.innerRow}
-            >
+            <div className={styles.innerRow}>
               {/* Drag-holder */}
               <div className={styles.dragHolder}>
                 <span>..</span>
@@ -129,36 +130,40 @@ class FileThemeNodeContentRenderer extends Component {
               <span className="smwb-checkbox">
                 <input
                   type="checkbox"
-                  name={ nodeTitle }
-                  id={ nodeTitle }
-                  value={ this.state.checked }
-                  onChange={ this.onCheckHandler }
+                  name={nodeTitle}
+                  id={nodeTitle}
+                  value={this.state.checked}
+                  onChange={this.onCheckHandler}
                 />
-                <label htmlFor={ nodeTitle }></label>
+                <label htmlFor={nodeTitle} />
               </span>
-
 
               {/* Expand button arrow */}
               {toggleChildrenVisibility &&
-              node.children &&
-              node.children.length > 0 && (
-                <button
-                  type="button"
-                  aria-label={node.expanded ? 'Collapse' : 'Expand'}
-                  className={
-                    node.expanded ? styles.collapseButton : styles.expandButton
-                  }
-                  style={{
-                    left: (lowerSiblingCounts.length - 0.7) * scaffoldBlockPxWidth,
-                  }}
-                  onClick={() =>
-                    toggleChildrenVisibility({
-                      node,
-                      path,
-                      treeIndex,
-                    })}
-                />
-              )}
+                node.children &&
+                node.children.length > 0 && (
+                  <button
+                    type="button"
+                    aria-label={node.expanded ? 'Collapse' : 'Expand'}
+                    className={
+                      node.expanded
+                        ? styles.collapseButton
+                        : styles.expandButton
+                    }
+                    style={{
+                      left:
+                        (lowerSiblingCounts.length - 0.7) *
+                        scaffoldBlockPxWidth,
+                    }}
+                    onClick={() =>
+                      toggleChildrenVisibility({
+                        node,
+                        path,
+                        treeIndex,
+                      })
+                    }
+                  />
+                )}
 
               {scaffold}
 
@@ -246,7 +251,7 @@ FileThemeNodeContentRenderer.defaultProps = {
   swapLength: null,
   title: null,
   toggleChildrenVisibility: null,
-  onCheck: null
+  onCheck: null,
 };
 
 FileThemeNodeContentRenderer.propTypes = {
@@ -283,7 +288,7 @@ FileThemeNodeContentRenderer.propTypes = {
   // Drop target
   canDrop: PropTypes.bool,
   isOver: PropTypes.bool.isRequired,
-  onCheck: PropTypes.func
+  onCheck: PropTypes.func,
 };
 
 export default FileThemeNodeContentRenderer;

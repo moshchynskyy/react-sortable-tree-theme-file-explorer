@@ -166,7 +166,7 @@ $colorGrey: #909395;
 
 .collapseButton::after {
   filter: drop-shadow(0 0 1px #83bef9) drop-shadow(0 0 1px #83bef9)
-          drop-shadow(0 0 1px #83bef9);
+    drop-shadow(0 0 1px #83bef9);
 }
 
 .expandButton::after {
@@ -328,4 +328,3 @@ $highlight-line-size: 6px; // Make it an even number for clean rendering
     line-height: 5px;
   }
 }
-
