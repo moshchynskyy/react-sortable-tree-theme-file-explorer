@@ -68,6 +68,10 @@ class FileThemeNodeContentRenderer extends Component {
     const isDraggedDescendant = draggedNode && isDescendant(draggedNode, node);
     const isLandingPadActive = !didDrop && isDragging;
 
+    // Custom calculations for creating all labels the same right end stop
+    const labelOffset = (toggleChildrenVisibility && node.children && node.children.length > 0) ? scaffoldBlockPxWidth : 0;
+    const labelWidth = 300 - (lowerSiblingCounts.length * scaffoldBlockPxWidth) - labelOffset;
+
     // Construct the scaffold representing the structure of the tree
     const scaffold = [];
     lowerSiblingCounts.forEach((lowerSiblingCount, i) => {
@@ -121,25 +125,14 @@ class FileThemeNodeContentRenderer extends Component {
           {connectDragPreview(
             <div className={styles.innerRow}>
               {/* Drag-holder */}
-              <div className={styles.dragHolder}>
-                <span>..</span>
-                <span>..</span>
-                <span>..</span>
-              </div>
-
-              <span className="smwb-checkbox">
-                <input
-                  type="checkbox"
-                  name={nodeTitle}
-                  id={nodeTitle}
-                  value={this.state.checked}
-                  onChange={this.onCheckHandler}
-                />
-                <label htmlFor={nodeTitle} />
-              </span>
+                <div className={styles.dragHolder}>
+                  <span>..</span>
+                  <span>..</span>
+                  <span>..</span>
+                </div>
 
               {/* Expand button arrow */}
-              {toggleChildrenVisibility &&
+                {toggleChildrenVisibility &&
                 node.children &&
                 node.children.length > 0 && (
                   <button
@@ -152,8 +145,8 @@ class FileThemeNodeContentRenderer extends Component {
                     }
                     style={{
                       left:
-                        (lowerSiblingCounts.length - 0.7) *
-                        scaffoldBlockPxWidth,
+                      (lowerSiblingCounts.length - 0.7) *
+                      scaffoldBlockPxWidth * 3,
                     }}
                     onClick={() =>
                       toggleChildrenVisibility({
@@ -199,7 +192,7 @@ class FileThemeNodeContentRenderer extends Component {
                       </div>
                     ))}
                   </div>
-                  <div className={styles.rowLabel}>
+                  <div className={styles.rowLabel} style={{minWidth: `${labelWidth}px`}}>
                     <span className={styles.rowTitle}>
                       {typeof nodeTitle === 'function'
                         ? nodeTitle({
@@ -209,6 +202,8 @@ class FileThemeNodeContentRenderer extends Component {
                           })
                         : nodeTitle}
                     </span>
+                    <span>&nbsp;{scaffold.length}</span>
+
                   </div>
 
                   <div className={styles.rowToolbar}>
