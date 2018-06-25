@@ -69,7 +69,8 @@ class FileThemeNodeContentRenderer extends Component {
     const isLandingPadActive = !didDrop && isDragging;
 
     // Custom calculations for creating all labels the same right end stop
-    const labelOffset = (toggleChildrenVisibility && node.children && node.children.length > 0) ? scaffoldBlockPxWidth : 0;
+    const labelOffset = (toggleChildrenVisibility && node.children && node.children.length > 0)
+      ? (scaffoldBlockPxWidth - 1) : 0;
     const labelWidth = 300 - (lowerSiblingCounts.length * scaffoldBlockPxWidth) - labelOffset;
 
     // Construct the scaffold representing the structure of the tree
@@ -202,8 +203,6 @@ class FileThemeNodeContentRenderer extends Component {
                           })
                         : nodeTitle}
                     </span>
-                    <span>&nbsp;{scaffold.length}</span>
-
                   </div>
 
                   <div className={styles.rowToolbar}>
