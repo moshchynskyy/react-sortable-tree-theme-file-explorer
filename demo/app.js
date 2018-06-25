@@ -19,7 +19,15 @@ class App extends Component {
           isDirectory: true,
           expanded: true,
           children: [
-            { title: 'styles.css' },
+            { title: 'styles.css',
+              children: [
+                { title: 'styles.css' },
+                { title: 'index.js' },
+                { title: 'reducers.js' },
+                { title: 'actions.js' },
+                { title: 'utils.js' },
+              ]
+            },
             { title: 'index.js' },
             { title: 'reducers.js' },
             { title: 'actions.js' },
