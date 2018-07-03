@@ -193,7 +193,7 @@ class FileThemeNodeContentRenderer extends Component {
                       </div>
                     ))}
                   </div>
-                  <div className={styles.rowLabel} style={{minWidth: `${labelWidth}px`}}>
+                  <div className={styles.rowLabel} style={{width: `${labelWidth}px`}}>
                     <span className={styles.rowTitle}>
                       {typeof nodeTitle === 'function'
                         ? nodeTitle({
