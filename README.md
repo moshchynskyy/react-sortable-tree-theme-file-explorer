@@ -8,13 +8,13 @@
 ## Usage
 
 ```sh
-npm install --save sortable-tree-smartweb-theme
+npm install --save react-sortable-tree-smartweb
 ```
 
 ```jsx
 import React, { Component } from 'react';
 import SortableTree from 'react-sortable-tree';
-import CustomTheme from 'sortable-tree-smartweb-theme';
+import CustomTheme from 'react-sortable-tree-smartweb';
 
 export default class Tree extends Component {
   constructor(props) {
