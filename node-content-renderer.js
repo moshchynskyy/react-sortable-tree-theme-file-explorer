@@ -140,7 +140,7 @@ class FileThemeNodeContentRenderer extends Component {
                 {/* Expand button arrow */}
                 <div
                   className={
-                    `${styles.titleColumn} ${styles.dataTreeColumn}` +
+                    styles.titleColumn `${styles.dataTreeColumn}` +
                     (isLandingPadActive ? ` ${styles.rowLandingPad}` : '') +
                     (isLandingPadActive && !canDrop
                       ? ` ${styles.rowCancelPad}`
