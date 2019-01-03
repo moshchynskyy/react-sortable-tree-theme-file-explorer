@@ -125,76 +125,72 @@ class FileThemeNodeContentRenderer extends Component {
           {/* Set the row preview to be used during drag and drop */}
           {connectDragPreview(
             <div className={styles.innerRow}>
-              {/* Drag-holder */}
-                <div className={styles.dragHolder}>
-                  <span>..</span>
-                  <span>..</span>
-                  <span>..</span>
+              {/* Drag-holder column */}
+                <div className={ `${styles.dragHolderColumn} ${styles.dataTreeColumn}` }>
+                  <div className={ styles.dragHolder } >
+                    <span>..</span>
+                    <span>..</span>
+                    <span>..</span>
+                  </div>
                 </div>
-
-              {/* Expand button arrow */}
-                {toggleChildrenVisibility &&
-                node.children &&
-                node.children.length > 0 && (
-                  <button
-                    type="button"
-                    aria-label={node.expanded ? 'Collapse' : 'Expand'}
-                    className={
-                      node.expanded
-                        ? styles.collapseButton
-                        : styles.expandButton
-                    }
-                    style={{
-                      left:
-                      (lowerSiblingCounts.length) *
-                      scaffoldBlockPxWidth,
-                    }}
-                    onClick={() =>
-                      toggleChildrenVisibility({
-                        node,
-                        path,
-                        treeIndex,
-                      })
-                    }
-                  />
-                )}
-
-              {scaffold}
-
-              <div
-                className={
-                  styles.row +
-                  (isLandingPadActive ? ` ${styles.rowLandingPad}` : '') +
-                  (isLandingPadActive && !canDrop
-                    ? ` ${styles.rowCancelPad}`
-                    : '') +
-                  (isSearchMatch ? ` ${styles.rowSearchMatch}` : '') +
-                  (isSearchFocus ? ` ${styles.rowSearchFocus}` : '') +
-                  (className ? ` ${className}` : '')
-                }
-                style={{
-                  opacity: isDraggedDescendant ? 0.5 : 1,
-                  ...style,
-                }}
-              >
+                {/* Checkbox column */}
+                <div className={ `${styles.checkboxColumn} ${styles.dataTreeColumn}` }>
+                  <input className={styles.checkbox} type='checkbox' />
+                </div>
+                {/* Expand button arrow */}
+                <div
+                  className={
+                    `${styles.titleColumn} ${styles.dataTreeColumn}` +
+                    (isLandingPadActive ? ` ${styles.rowLandingPad}` : '') +
+                    (isLandingPadActive && !canDrop
+                      ? ` ${styles.rowCancelPad}`
+                      : '') +
+                    (isSearchMatch ? ` ${styles.rowSearchMatch}` : '') +
+                    (isSearchFocus ? ` ${styles.rowSearchFocus}` : '') +
+                    (className ? ` ${className}` : '')
+                  }
+                  style={{
+                    opacity: isDraggedDescendant ? 0.5 : 1,
+                    ...style,
+                  }}
+                >
+                  <div className={ styles.toggleBtn } >
+                    {toggleChildrenVisibility &&
+                     node.children &&
+                     node.children.length > 0 && (
+                       <button
+                         type="button"
+                         aria-label={node.expanded ? 'Collapse' : 'Expand'}
+                         className={
+                           node.expanded
+                             ? styles.collapseButton
+                             : styles.expandButton
+                         }
+                         style={{
+                           left:
+                             (lowerSiblingCounts.length) *
+                             scaffoldBlockPxWidth,
+                         }}
+                         onClick={() =>
+                           toggleChildrenVisibility({
+                             node,
+                             path,
+                             treeIndex,
+                           })
+                         }
+                       />
+                     )}
+                  {scaffold}
+                </div>
+                
                 <div
                   className={
                     styles.rowContents +
                     (!canDrag ? ` ${styles.rowContentsDragDisabled}` : '')
                   }
                 >
-                  <div className={styles.rowToolbar}>
-                    {icons.map((icon, index) => (
-                      <div
-                        key={index} // eslint-disable-line react/no-array-index-key
-                        className={styles.toolbarButton}
-                      >
-                        {icon}
-                      </div>
-                    ))}
-                  </div>
                   <div className={styles.rowLabel} style={{width: `${labelWidth}px`}}>
-                    <span className={styles.rowTitle}>
+                    <span className={styles.rowTitle} >
                       {typeof nodeTitle === 'function'
                         ? nodeTitle({
                             node,
@@ -204,18 +200,22 @@ class FileThemeNodeContentRenderer extends Component {
                         : nodeTitle}
                     </span>
                   </div>
-
-                  <div className={styles.rowToolbar}>
-                    {buttons.map((btn, index) => (
-                      <div
-                        key={index} // eslint-disable-line react/no-array-index-key
-                        className={styles.toolbarButton}
-                      >
-                        {btn}
-                      </div>
-                    ))}
-                  </div>
                 </div>
+              </div>
+              <div className = { `${styles.typeColumn} ${styles.dataTreeColumn}` }>
+                type
+              </div>
+              <div className = { `${styles.visibilityColumn} ${styles.dataTreeColumn}` }>
+                visibility
+              </div>
+              <div className = { `${styles.idColumn} ${styles.dataTreeColumn}` }>
+                id
+              </div>
+              <div className = { `${styles.lastUpdColumn} ${styles.dataTreeColumn}` }>
+                last upd
+              </div>
+              <div className = { `${styles.actionsColumn} ${styles.dataTreeColumn}` }>
+                actions
               </div>
             </div>
           )}

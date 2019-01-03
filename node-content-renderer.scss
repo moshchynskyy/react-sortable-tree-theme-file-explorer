@@ -21,6 +21,7 @@ $colorGrey: #909395;
   cursor: default;
 }
 
+// notUsed
 .row {
   height: 100%;
   white-space: nowrap;
@@ -33,6 +34,7 @@ $colorGrey: #909395;
 }
 
 .innerRow {
+  width: 100%;
   display: flex;
   align-items: center;
   height: 50px;
@@ -318,14 +320,57 @@ $highlight-line-size: 6px; // Make it an even number for clean rendering
   }
 }
 
-.dragHolder {
-  width: 30px;
-  height: 30px;
-  text-align: center;
 
-  > span {
-    display: block;
-    font-size: 24px;
-    line-height: 5px;
+// additional styles for new column (Moshchynskyi, Jan the 3rd 2019)
+.dragHolderColumn {
+  text-align: center;
+  > .dragHolder {
+    height: 30px;
+    width: 30px;
+    > span {
+      display: block;
+      font-size: 24px;
+      line-height: 5px;
+    }
   }
+}
+.checkboxColumn {
+  background-color: pink;
+}
+.checkbox {
+  width: 20px;
+  height: 20px;
+}
+.toggleBtn {
+  display: flex;
+  align-items: center;
+}
+.typeColumn {
+  width: 100%;
+}
+.titleColumn {
+  height: 100%;
+  white-space: nowrap;
+  display: flex;
+  position: relative;
+
+  & > * {
+    box-sizing: border-box;
+  }
+}
+.visibilityColumn {
+  width: 100%;
+}
+.idColumn {
+  width: 100%;
+}
+.lastUpdColumn {
+  width: 100%;
+}
+.actionsColumn {
+  width: 100%;
+}
+
+.dataTreeColumn {
+  flex: 1 1 auto;
 }
