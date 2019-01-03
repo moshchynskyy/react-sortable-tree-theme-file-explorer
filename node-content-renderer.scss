@@ -348,12 +348,12 @@ $highlight-line-size: 6px; // Make it an even number for clean rendering
 .typeColumn {
   width: 100%;
 }
-.titleColumn {
+.titleColumn  {
+  flex: 1 1 auto;
   height: 100%;
   white-space: nowrap;
   display: flex;
   position: relative;
-
   & > * {
     box-sizing: border-box;
   }
