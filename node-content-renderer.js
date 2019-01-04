@@ -113,7 +113,9 @@ class FileThemeNodeContentRenderer extends Component {
         );
       }
     });
-
+    
+    console.log('node: ', node);
+  
     const nodeContent = (
       <div style={{ height: '100%' }} {...otherProps}>
         <div
@@ -203,19 +205,49 @@ class FileThemeNodeContentRenderer extends Component {
                 </div>
               </div>
               <div className = { `${styles.typeColumn} ${styles.dataTreeColumn}` }>
-                type
+                {typeof nodeTitle === 'function'
+                  ? nodeTitle({
+                    node,
+                    path,
+                    treeIndex,
+                  })
+                  : nodeTitle}
               </div>
               <div className = { `${styles.visibilityColumn} ${styles.dataTreeColumn}` }>
-                visibility
+                {typeof nodeTitle === 'function'
+                  ? nodeTitle({
+                    node,
+                    path,
+                    treeIndex,
+                  })
+                  : nodeTitle}
               </div>
               <div className = { `${styles.idColumn} ${styles.dataTreeColumn}` }>
-                id
+                {typeof nodeTitle === 'function'
+                  ? nodeTitle({
+                    node,
+                    path,
+                    treeIndex,
+                  })
+                  : nodeTitle}
               </div>
               <div className = { `${styles.lastUpdColumn} ${styles.dataTreeColumn}` }>
-                last upd
+                {typeof nodeTitle === 'function'
+                  ? nodeTitle({
+                    node,
+                    path,
+                    treeIndex,
+                  })
+                  : nodeTitle}
               </div>
               <div className = { `${styles.actionsColumn} ${styles.dataTreeColumn}` }>
-                actions
+                {typeof nodeTitle === 'function'
+                  ? nodeTitle({
+                    node,
+                    path,
+                    treeIndex,
+                  })
+                  : nodeTitle}
               </div>
             </div>
           )}
